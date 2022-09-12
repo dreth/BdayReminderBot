@@ -31,10 +31,10 @@ pip install python-telegram-bot -U --pre
 4. Add telegram API to the .env file, I provided a template, but this command will create a new one with the needed environment variables, just replace  `APIKEY` with your telegram bot API key and `CHATID` with your chat ID (this [thread](https://stackoverflow.com/questions/41664810/how-can-i-send-a-message-to-someone-with-my-telegram-bot-using-their-username) in stackoverflow details how you can get that)
 
 ```bash
-touch .env && echo -e "TELEGRAM_BOT_API_KEY=\"APIKEY\"\nYOUR_CHAT_ID=\"CHATID\"" > .env
+echo -e "TELEGRAM_BOT_API_KEY=\"APIKEY\"\nYOUR_CHAT_ID=\"CHATID\"" > .env && rm .env.template
 ```
 
-5. Add all the birthdays to the .csv file provided, the file must be populated using the table header as given and must have at least one birthday
+5. Create a csv file with your birthdays in the format shown below.
 
 Example:
 
@@ -44,7 +44,11 @@ Example:
 | Michael | 1983 | 3   | 2  |
 | George | 1988 | 9   | 15  |
 
-You can skip the year if you don't know it, but the **name**, **month** and **day** must be populated.
+You can skip the year if you don't know it, but the **name**, **month** and **day** must be populated, otherwise that row will be skipped.
+
+```bash
+echo -e "name,year,month,day\n" > birthday_list.csv 
+```
 
 6. Add a cron job to run this once a day every day, when it runs, you should receive a message from the bot if there's a birthday
 
