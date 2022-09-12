@@ -48,7 +48,10 @@ def prepare_reminder_message(bdays_df):
             messages.append(sentence[1].format(bdays_df.name[i]))
 
     # return the messages
-    return sentence[2].format(TODAY) + '\n'.join(messages)
+    if messages:
+        return sentence[2].format(TODAY) + '\n'.join(messages)
+    else:
+        return None
 
 # bday checker
 def check_bdays():
@@ -75,7 +78,8 @@ async def main():
 
     async with bot:
         # send birthdays message
-        await bot.send_message(text=birthdays_message, chat_id=YOUR_CHAT_ID)
+        if birthdays_message:
+            await bot.send_message(text=birthdays_message, chat_id=YOUR_CHAT_ID)
 
 # run main
 asyncio.run(main())
