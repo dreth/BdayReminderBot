@@ -1,0 +1,12 @@
+{
+    "en": [
+        "{0} - Turns {1}",
+        "{0}",
+        "🎂 Birthdays for today: {0}\n\n"
+    ],
+    "es": [
+        "{0} - Cumple {1}",
+        "{0}",
+        "🎂 Cumpleaños de hoy: {0}\n\n"
+    ]
+}
