@@ -62,4 +62,4 @@ And add (change the 6 with whatever hour you want this to run at):
 0 6 * * * /path/to/cloned/repo/bdaychecker/bin/python /path/to/cloned/repo/check_bdays.py
 ```
 
-I added a bash script to the root of the repo (`initial_setup.sh`) which runs all commands before step 6.
+I added a bash script to the root of the repo (`initial_setup.sh`) which runs all commands before step 6, you can run this script with `source initial_setup.sh` or `. initial_setup.sh` in bash.
