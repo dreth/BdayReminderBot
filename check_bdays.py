@@ -53,6 +53,11 @@ def prepare_reminder_message(bdays_df):
     else:
         return None
 
+# generate date but validate
+def date_with_validation(y,m,d):
+    try: return dt.date(y,m,d)
+    except: return None
+
 # bday checker
 def check_bdays():
     # read data
@@ -62,7 +67,7 @@ def check_bdays():
     df = df[df["month"].notna() & df["day"].notna()]
 
     # parse dates in the dataset
-    df["date"] = [dt.date(TODAY.year,int(m),int(d)) for m, d in zip(df["month"], df["day"])]
+    df["date"] = [date_with_validation(TODAY.year,int(m),int(d)) for m, d in zip(df["month"], df["day"])]
 
     # return who's bday is today
     return df[df["date"] == TODAY]
