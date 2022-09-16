@@ -42,10 +42,10 @@ def prepare_reminder_message(bdays_df):
     
     # loop over bdays df and append the message if the person has a bday today
     for i in range(bdays_df.shape[0]):
-        if ~np.isnan(bdays_df.year[i]):
-            messages.append(sentence[0].format(bdays_df.name[i],int(TODAY.year - bdays_df.year[i])))
+        if ~np.isnan(bdays_df.year.values[i]):
+            messages.append(sentence[0].format(bdays_df.name.values[i],int(TODAY.year - bdays_df.year.values[i])))
         else:
-            messages.append(sentence[1].format(bdays_df.name[i]))
+            messages.append(sentence[1].format(bdays_df.name.values[i]))
 
     # return the messages
     if messages:
